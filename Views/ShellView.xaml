@@ -1,0 +1,87 @@
+﻿<Window x:Class="GameStoreWPF.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameStoreWPF.Views"
+        mc:Ignorable="d"
+        Title="Game Store" Height="700" Width="800" Background="#17181a">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
+            <Label Content="Video game store" HorizontalAlignment="Center" FontWeight="Bold" FontSize="22" Margin="0 0 0 5" Foreground="White"/>
+            <Label Content="Searching parameters:" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="0 0 0 5" Foreground="White"/>
+            <Label Content="Console: " FontSize="15" FontWeight="Bold" Foreground="White"/>
+            <ComboBox ItemsSource="{Binding ConsoleVideoGames}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedConsole, Mode=TwoWay}" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Add" x:Name="AddConsole" />
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Update" x:Name="UpdateConsole" />
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Delete" x:Name="DeleteConsole" />
+            </StackPanel>
+            <Label Content="Year: " FontSize="15" FontWeight="Bold" Foreground="White"/>
+            <ComboBox ItemsSource="{Binding PublicationYears}" DisplayMemberPath="Year" SelectedItem="{Binding SelectedYear, Mode=TwoWay}" Margin="0 0 0 5"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Add" x:Name="AddYear" />
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Update" x:Name="UpdateYear" />
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Delete" x:Name="DeleteYear" />
+            </StackPanel>
+            <Label Content="Type: " FontSize="15" FontWeight="Bold" Foreground="White"/>
+            <ComboBox ItemsSource="{Binding VideoGameTypes}" DisplayMemberPath="Type" SelectedItem="{Binding SelectedType, Mode=TwoWay}" Margin="0 0 0 5"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Add" x:Name="AddType" />
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Update" x:Name="UpdateType" />
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Delete" x:Name="DeleteType" />
+            </StackPanel>
+            <Label Content="Player age: " FontSize="15" FontWeight="Bold" Foreground="White"/>
+            <ComboBox ItemsSource="{Binding VideoGameAges}" DisplayMemberPath="Age" SelectedItem="{Binding SelectedAge, Mode=TwoWay}" Margin="0 0 0 5"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Add" x:Name="AddAge" />
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Update" x:Name="UpdateAge" />
+                <Button Style="{StaticResource HoverButtonStyle}" Content="Delete" x:Name="DeleteAge" />
+            </StackPanel>
+            <Button Style="{StaticResource HoverButtonStyle}" Content="Refresh" x:Name="RefreshGames" />
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Video Games" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Identifier" TextAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Grid.Column="1" Text="Name" TextAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="White"/>
+                </Grid>
+                <ListBox Background="#17181a" Foreground="White" Grid.Row="2" Name="VideoGames" HorizontalContentAlignment="Stretch" SelectedItem="{Binding SelectedGame}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.5*" />
+                                    <ColumnDefinition Width="0.5*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Id}" TextAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Name}" TextAlignment="Center" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Style="{StaticResource HoverButtonStyle}" Content="Add" x:Name="AddGame" />
+                    <Button Style="{StaticResource HoverButtonStyle}" Content="Update" x:Name="UpdateGame" />
+                    <Button Style="{StaticResource HoverButtonStyle}" Content="Delete" x:Name="DeleteGame" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
